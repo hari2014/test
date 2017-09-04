@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% if request.user.is_authenticated %}
+<div class="container">
+    <center><h4>Welcome {{user.first_name}}</h4></center>
+    <br>
+</div>
+{%else%}
+        <div class="container">
+    <center><h4>Login Please</h4></center>
+    <br>
+    <center><form method="post">
+         {%csrf_token%}
+        <table border="0">
+            {{ form.as_table }}
+        </table>
+        <br>
+        <br>
+        <button type="submit">Login</button>
+    </form></center>
+</div>
+{%endif%}
+
+{% endblock %}
+
